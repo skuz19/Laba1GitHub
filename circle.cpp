@@ -10,7 +10,7 @@ void startOutput()
     cout << "задав радиус круга и угол интересуемого сектора." << endl << endl;
 }
 
-float getSafeInput(string message)
+float getSafeInputRadius(string message)
 {
     string line;
     float value;
@@ -25,6 +25,25 @@ float getSafeInput(string message)
         }
         
         cout << "Ошибка! Введите только натуральное число!" << endl;
+    }
+}
+
+
+float getSafeInputAngle(string message)
+{
+    string line;
+    float value;
+    while (true) {
+        cout << message;
+        getline(cin, line); // Проверяю всю строку целиком
+        
+        stringstream ss(line);
+        // Считаю число и проверяю, что после него ничего нет
+        if (ss >> value && ss.eof()) {
+            if (value >= 0 && value <= 360) return value;
+        }
+        
+        cout << "Ошибка! Введите значение угла от 0 до 360!" << endl;
     }
 }
 
@@ -51,20 +70,15 @@ int main()
 {
     startOutput();  
 
-    float radius  = getSafeInput("Введите радиус: ");
-    float angle = getSafeInput("Введите угол сектора: ");
-    if (angle <= 360)
-    {
+    float radius  = getSafeInputRadius("Введите радиус: ");
+    float angle = getSafeInputAngle("Введите угол сектора: ");
+
     float square = circleSquare(radius);
 
     cout << endl << "Параметры заданного круга:" << endl;
     cout << "Длина окружности: " << circleLength(radius) << endl;
     cout << "Площадь круга: " << square << endl;
     cout << "Площадь сектора: " << sectorSquare(square, angle) << endl;
-    }
 
-    else {
-        cout << "Неверный угол. Он может быть только от 0 до 360 градусов." << endl;
-    }
     return 0;
 }

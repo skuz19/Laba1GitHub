@@ -13,7 +13,7 @@ double s(double a, double b, double h) {
 double srl(double a, double b) {
     return (a + b) / 2;
 }
-
+//123123
 int main() {
     setlocale(LC_ALL, "RU");
 

@@ -72,18 +72,13 @@ int main()
 
     float radius  = getSafeInputRadius("Введите радиус: ");
     float angle = getSafeInputAngle("Введите угол сектора: ");
-    if (angle <= 360)
-    {
+
     float square = circleSquare(radius);
 
     cout << endl << "Параметры заданного круга:" << endl;
     cout << "Длина окружности: " << circleLength(radius) << endl;
     cout << "Площадь круга: " << square << endl;
     cout << "Площадь сектора: " << sectorSquare(square, angle) << endl;
-    }
 
-    else {
-        cout << "Неверный угол. Он может быть только от 0 до 360 градусов." << endl;
-    }
     return 0;
 }
